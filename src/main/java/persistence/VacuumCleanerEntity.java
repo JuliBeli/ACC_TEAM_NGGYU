@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "vacuum_cleaner")
 public class VacuumCleanerEntity extends Model {
 
     @Id

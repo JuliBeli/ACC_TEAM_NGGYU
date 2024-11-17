@@ -1,5 +1,7 @@
 plugins {
-    id 'java'
+    id("idea")
+    id("java")
+    id("io.ebean") version "12.6.5"
 }
 
 group = 'org.scraper'
@@ -17,11 +19,12 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
 
     annotationProcessor("io.ebean:querybean-generator:12.6.5")
-
     implementation 'org.avaje.composite:logback:1.1'
     implementation 'io.ebean:ebean:12.6.5'
     implementation 'io.ebean:ebean-querybean:12.6.5'
     implementation 'org.postgresql:postgresql:42.7.2'
+    testImplementation 'org.avaje.composite:junit:1.1'
+
     implementation 'com.mashape.unirest:unirest-java:1.4.9'
 }
 
