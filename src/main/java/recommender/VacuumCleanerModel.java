@@ -34,4 +34,17 @@ public class VacuumCleanerModel {
                 vacuumCleanerEntity.isWireless()
         );
     }
+
+    @Override
+    public String toString() {
+        return "VacuumCleanerModel{" +
+                "url='" + url + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", brand='" + brand + '\'' +
+                ", weightInLbs=" + weightInLbs +
+                ", price=" + price +
+                ", powerInWatts=" + powerInWatts +
+                ", isWireless=" + isWireless +
+                '}';
+    }
 }
