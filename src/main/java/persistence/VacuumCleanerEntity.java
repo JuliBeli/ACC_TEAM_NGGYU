@@ -19,11 +19,11 @@ public class VacuumCleanerEntity extends Model {
     private final double weightInLbs;
     private final double price;
     private final double powerInWatts;
-    private final boolean wireless;
+    private final boolean isWireless;
 
     private VacuumCleanerEntity(
             String url, String displayName, String brand, double weightInLbs,
-            double price, double powerInWatts, boolean wireless) {
+            double price, double powerInWatts, boolean isWireless) {
         this.id = UUID.randomUUID().toString();
         this.url = url;
         this.displayName = displayName;
@@ -31,7 +31,7 @@ public class VacuumCleanerEntity extends Model {
         this.weightInLbs = weightInLbs;
         this.price = price;
         this.powerInWatts = powerInWatts;
-        this.wireless = wireless;
+        this.isWireless = isWireless;
     }
 
     public static VacuumCleanerEntity from(VacuumCleaner vacuumCleaner) {
@@ -75,6 +75,6 @@ public class VacuumCleanerEntity extends Model {
     }
 
     public boolean isWireless() {
-        return wireless;
+        return isWireless;
     }
 }
