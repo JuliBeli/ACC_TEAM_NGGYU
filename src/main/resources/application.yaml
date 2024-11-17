@@ -1,0 +1,9 @@
+ebean:
+  datasource:
+    db:
+      username: acc
+      password: nggyu
+      url: jdbc:postgresql://localhost:5432/acc
+  ddl:
+    generate: true
+    run: true
