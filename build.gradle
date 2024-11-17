@@ -18,10 +18,11 @@ dependencies {
 
     annotationProcessor("io.ebean:querybean-generator:12.6.5")
 
-    implementation("org.avaje.composite:logback:1.1")
-    implementation("io.ebean:ebean:12.6.5")
-    implementation("io.ebean:ebean-querybean:12.6.5")
+    implementation 'org.avaje.composite:logback:1.1'
+    implementation 'io.ebean:ebean:12.6.5'
+    implementation 'io.ebean:ebean-querybean:12.6.5'
     implementation 'org.postgresql:postgresql:42.7.2'
+    implementation 'com.mashape.unirest:unirest-java:1.4.9'
 }
 
 test {
