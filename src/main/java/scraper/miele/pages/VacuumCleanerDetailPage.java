@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import scraper.miele.MieleVacuumCleaner;
 import scraper.miele.dto.VacuumCleanerTechnicalData;
 
+import java.util.List;
+
 public class VacuumCleanerDetailPage {
 
     private final String URL;
@@ -21,8 +23,13 @@ public class VacuumCleanerDetailPage {
         Actions action = new Actions(driver);
 
         try {
+            List<WebElement> optionalProducts = driver.findElements(By.xpath("//h2[contains(text(), 'Optional products and accessories')]"));
             WebElement downloadPart = driver.findElement(By.xpath("//h2[contains(text(), 'Downloads, CAD, & apps')]"));
-            action.moveToElement(downloadPart).build().perform();
+            if (!optionalProducts.isEmpty()) {
+                action.moveToElement(optionalProducts.get(0)).build().perform();
+            } else {
+                action.moveToElement(downloadPart).build().perform();
+            }
 
             WebElement technicalDetails = driver.findElement(By.cssSelector("div[spy-section-name='Technical Details']"));
             technicalDetails.findElement(By.xpath("//button[contains(text(), 'View more specs')]")).click();
