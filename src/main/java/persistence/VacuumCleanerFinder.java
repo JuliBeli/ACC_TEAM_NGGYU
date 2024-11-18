@@ -1,6 +1,7 @@
 package persistence;
 
 import io.ebean.Finder;
+import recommender.VacuumCleanerModel;
 
 import java.util.List;
 
@@ -10,7 +11,9 @@ public class VacuumCleanerFinder extends Finder<String, VacuumCleanerEntity> {
         super(VacuumCleanerEntity.class);
     }
 
-    public List<VacuumCleanerEntity> findAll() {
-        return query().findList();
+    public List<VacuumCleanerModel> findAll() {
+        return query().findList().stream()
+                .map(VacuumCleanerModel::from)
+                .toList();
     }
 }

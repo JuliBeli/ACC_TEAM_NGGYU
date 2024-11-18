@@ -6,12 +6,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        VacuumCleanerFinder vacuumCleanerFinder = new VacuumCleanerFinder();
-        List<VacuumCleanerModel> vacuumCleaners = vacuumCleanerFinder.findAll()
-                .stream()
-                .map(VacuumCleanerModel::from)
-                .toList();
+        List<VacuumCleanerModel> vacuumCleaners = new VacuumCleanerFinder().findAll();
 
-        vacuumCleaners.forEach(System.out::println);
+        Requirement requirement = new Questionnaire().gatherUserRequirements();
+        List<VacuumCleanerModel> recommendedVacuumCleaners = new RecommendationProcessor().process(requirement, vacuumCleaners);
+
     }
 }

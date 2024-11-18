@@ -1,12 +1,10 @@
 package recommender;
 
-import scraper.VacuumCleaner;
-
 import java.util.List;
 
 public class RecommendationProcessor {
 
-    public List<VacuumCleaner> process(Requirement requirement) {
+    public List<VacuumCleanerModel> process(Requirement requirement, List<VacuumCleanerModel> vacuumCleanerModels) {
         return List.of();
     }
 }

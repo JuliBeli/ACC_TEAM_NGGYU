@@ -11,7 +11,12 @@ public class Requirement {
 
     private Boolean isWireless;
 
-    public Requirement() {
+    public Requirement(String brand, Budget budget, Boolean isPortable, Boolean isEcoFriendly, Boolean isWireless) {
+        this.brand = brand;
+        this.budge = budget;
+        this.isPortable = isPortable;
+        this.isEcoFriendly = isEcoFriendly;
+        this.isWireless = isWireless;
     }
 
     public String getBrand() {
