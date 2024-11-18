@@ -23,7 +23,7 @@ dependencies {
     implementation 'io.ebean:ebean:12.6.5'
     implementation 'io.ebean:ebean-querybean:12.6.5'
     implementation 'org.postgresql:postgresql:42.7.2'
-    testImplementation 'org.avaje.composite:junit:1.1'
+    implementation 'org.apache.commons:commons-lang3:3.0'
 
     implementation 'com.mashape.unirest:unirest-java:1.4.9'
 }

@@ -1,5 +1,7 @@
 package recommender;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.Scanner;
 
 import static constant.Brand.SUPPORTED_BRANDS_IN_STRING;
@@ -8,10 +10,12 @@ public class Questionnaire {
 
     private final Scanner scanner;
     private final InputValidator inputValidator;
+    private final InputConverter inputConverter;
 
     public Questionnaire() {
         this.scanner = new Scanner(System.in);
         this.inputValidator = new InputValidator();
+        this.inputConverter = new InputConverter();
     }
 
     public Requirement gatherUserRequirements() {
@@ -46,7 +50,29 @@ public class Questionnaire {
     }
 
     private Budget askBudget() {
-        return null;
+        System.out.println("Do you have a budget in mind? (y/N)");
+        String userResponse = scanner.nextLine();
+
+        if (userResponse.isBlank() || userResponse.equalsIgnoreCase("n")) {
+            return new Budget(0, Double.MAX_VALUE);
+        } else if (!userResponse.equalsIgnoreCase("y")) {
+            System.out.println("Invalid input. Please try again.");
+            return askBudget();
+        }
+
+        System.out.println("Please enter your budget:");
+        String budget = scanner.nextLine();
+        if (!inputValidator.isValidBudgetFormat(budget)) {
+            System.out.println("Invalid budget format. Please try again.");
+            return askBudget();
+        }
+        if (!inputValidator.isValidBudgetRange(budget)) {
+            System.out.println("Invalid budget range. Please try again.");
+            return askBudget();
+        }
+
+        Pair<Double, Double> priceRange = inputConverter.extractPrices(budget);
+        return new Budget(priceRange.getLeft(), priceRange.getRight());
     }
 
     private Boolean askPortablePreference() {
