@@ -33,20 +33,21 @@ public class Questionnaire {
 
         if (userResponse.isBlank() || userResponse.equalsIgnoreCase("n")) {
             return null;
-        } else if (userResponse.equalsIgnoreCase("y")) {
-            System.out.println("Please enter the brand name:");
-            System.out.println("(We provide: " + SUPPORTED_BRANDS_IN_STRING + ")");
-            String brand = scanner.nextLine();
-            if (inputValidator.isValidBrand(brand)) {
-                return brand;
-            } else {
-                System.out.println("Sorry, we do not support this brand. Please choose another one.");
-                return askBrandPreference();
-            }
-        } else {
+        } else if (!userResponse.equalsIgnoreCase("y")) {
             System.out.println("Invalid input. Please try again.");
             return askBrandPreference();
         }
+
+        System.out.println("Please enter the brand name:");
+        System.out.println("(We provide: " + SUPPORTED_BRANDS_IN_STRING + ")");
+        String brand = scanner.nextLine();
+        if (!inputValidator.isValidBrand(brand)) {
+            // TODO: guess the brand
+            System.out.println("Sorry, we do not support this brand. Please choose another one.");
+            return askBrandPreference();
+        }
+
+        return brand;
     }
 
     private Budget askBudget() {
