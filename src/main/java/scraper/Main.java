@@ -1,6 +1,7 @@
 package scraper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import scraper.dyson.DysonVacuumCleanerScraper;
 import scraper.miele.MieleVacuumCleanerScraper;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         List<VacuumCleanerScraper> scrapers = List.of(
-                new MieleVacuumCleanerScraper()
+                new DysonVacuumCleanerScraper()
         );
 
         Set<VacuumCleaner> vacuumCleaners = scrapers.stream()
